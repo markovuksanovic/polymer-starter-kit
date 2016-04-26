@@ -1,5 +1,5 @@
 {
-  "firebase": "polymer-starter-kit",
+  "firebase": "coles-fs-demo",
   "public": "dist",
   "ignore": [
     "firebase.json",
