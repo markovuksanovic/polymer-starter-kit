@@ -10,19 +10,6 @@ then
   date_value=`date`
   sed -i.tmp1 "s/This is another card./This is another card. PSK Deployed on: $date_value/" app/index.html
 
-  deploy_ghpages () {
-    # Deploying to GitHub Pages! (http://polymerelements.github.io/polymer-starter-kit)
-    echo Deploying to GitHub Pages
-    sed -i.tmp "s/\/\/ app.baseUrl = '\/polymer-starter-kit/app.baseUrl = '\/polymer-starter-kit/" app/scripts/app.js
-    sed -i.tmp2 "s/<\/head>/\  \<script>'https:'!==window.location.protocol\&\&(window.location.protocol='https')<\/script>&/g" app/index.html
-    gulp build-deploy-gh-pages
-    # Undoing Changes to PSK for GitHub Pages
-    cp app/scripts/app.js.tmp app/scripts/app.js
-    rm app/scripts/app.js.tmp
-    cp app/index.html.tmp2 app/index.html
-    rm app/index.html.tmp2
-  }
-
   deploy_firebase () {
     # Deploying to Firebase! (https://polymer-starter-kit.firebaseapp.com)
     echo Deploying to Firebase
@@ -42,7 +29,6 @@ then
     rm firebase.json
   }
 
-  deploy_ghpages
   deploy_firebase
 
   # Revert to orginal index.html and delete temp file
